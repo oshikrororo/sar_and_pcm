@@ -23,7 +23,7 @@ def evaluate_model(model, test_x, test_y, fold_number=None, iteration_number=Non
     mcc = matthews_corrcoef(test_y, labels)
 
     if interactive:
-        prepare_folds.out_stream(f'Итерация {iteration_number} Фолд {fold_number}')
+        prepare_folds.out_stream(f'iteration {iteration_number} fold {fold_number}')
         prepare_folds.out_stream(f'AUC ROC = {roc}')
         prepare_folds.out_stream(f'MCC = {mcc}')
         prepare_folds.out_stream('-' * 20)
@@ -80,22 +80,21 @@ def train_iterations(data, compound_descriptors, n_iterations=5, n_folds=5, mode
                     else:
                         predictions[pair] = [float(proba)]
         protein_rocs.append(np.median(rocs))
-        prepare_folds.out_stream(f'Белок {protein}')
-        prepare_folds.out_stream(f'Медианная AUC ROC = {np.median(rocs)}')
+        prepare_folds.out_stream(f'protein {protein}')
+        prepare_folds.out_stream(f'median AUC ROC = {np.median(rocs)}')
         prepare_folds.out_stream('-' * 20)
-    prepare_folds.out_stream(f'Время обучения: {datetime.datetime.now() - then}')
-    prepare_folds.out_stream(f'Средняя AUC ROC модели = {np.mean(protein_rocs)}')
+    prepare_folds.out_stream(f'time: {datetime.datetime.now() - then}')
+    prepare_folds.out_stream(f'mean model AUC ROC = {np.mean(protein_rocs)}')
     prepare_folds.out_stream('-' * 20)
     return predictions
 
 
 def train_qsar(grid):
     for parameters in ParameterGrid(grid):
-        path = rf"C:\Users\georg\OneDrive\Документы\лаба\papyrus\data_tables\{parameters['family']}s_classes.tsv"
+        path = # path to the fold table (though folds are ignored for SAR)
         data = pd.read_csv(path, sep='\t')
 
-        compound_path = (r"C:\Users\georg\OneDrive\Документы\лаба\papyrus\compounds" +
-                         f"\\{parameters['family']}s_{parameters['compounds']}.txt")
+        compound_path = # path to the compound descriptors (json-file)
         with open(compound_path) as file:
             compound_descriptors = json.load(file)
 
