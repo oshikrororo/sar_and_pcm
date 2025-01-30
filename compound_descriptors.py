@@ -5,8 +5,8 @@ from rdkit.Chem import AllChem
 
 pd.set_option('display.max_columns', None)
 
-PATH = "C:\\Users\\georg\\OneDrive\\Документы\\лаба\\papyrus\\data_tables\\P.tsv"
-TARGET = '\\'.join((PATH.split('\\')[:-1])) + '\\' + 'Ps_ECFPs.txt'
+PATH = # path to the input file (from Papyrus dataset)
+TARGET = # path to the output file
 
 df = pd.read_csv(PATH, sep='\t')
 print('таблица прочитана')
