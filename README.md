@@ -1,4 +1,4 @@
-# Research data for an article "Comparative Efficiency of Structure Activity Relationship and Proteochemometric Modelling"
+# Research data for the article "Comparative Efficiency of Structure Activity Relationship and Proteochemometric Modelling"
 compound_descriptors.py - aquisition of the compound descriptors (Extended Connectivity Fingerprints)  
 protein_descriptors.py - aquisition of the protein descriptors (UniRep, z-scales and some more)  
 train_pcm.py - training of the PCM models  
