@@ -68,13 +68,14 @@ def compute_united(probas):
 
 
 def main():
-    path = '../pcm/P_UniRep_ECFPs_probas.json'
-    path_to_class = r"C:\Users\georg\OneDrive\Документы\лаба\papyrus\data_tables\all_GPCRs_classes.tsv"
+    path = # path to the input-file (the probas in the json-file)
+    path_to_class = # path to the fold table
     with open(path) as file:
         probas = json.load(file)
 
-    # compute(probas, path=path_to_class)
-    compute_united(probas)
+    
+    compute(probas, path=path_to_class) # target-centric score
+    compute_united(probas) # simple score
 
 
 if __name__ == '__main__':
