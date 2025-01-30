@@ -4,7 +4,6 @@ from jax_unirep import get_reps
 from jax_unirep.utils import load_params
 import asyncio
 import aiohttp
-from domain_analysis import make_fasta
 
 
 def get_sequences(accessions):
@@ -192,7 +191,7 @@ def get_descriptors(sequence_dict):
             print(c)
             return_dict[accession] = descriptor
         except KeyError:
-            print('селеноцистеин')
+            print('selenocysteine')
         except ZeroDivisionError:
             print(sequence)
 
@@ -215,23 +214,22 @@ def get_descriptors(sequence_dict):
 
 
 def main():
-    path = "C:\\Users\\georg\\OneDrive\\Документы\\лаба\\papyrus_all_wt_human.tsv"
-    sequence_path = "C:\\Users\\georg\\OneDrive\\Документы\\лаба\\papyrus\\proteins\\sequences.json"
-    descriptor_name = 'UniRep_256'
-    desriptor_path = f"C:\\Users\\georg\\OneDrive\\Документы\\лаба\\papyrus\\proteins\\papyrus_{descriptor_name}.json"
+    path = # path to the input file (from Papyrus dataset)
+    sequence_path = # path to the input file (json-file containing sequences of the proteins)
+    descriptor_name = # wanted filename 
+    desriptor_path = # path to the output file
+
+    # uncomment following for sequences aquisition
     # accessions = parse_ids(path)
     # sequence_dict = get_sequences(accessions)
     # with open(sequence_path, 'w') as file:
     #     json.dump(sequence_dict, file)
-    # with open(sequence_path) as file:
-    #     sequence_dict = json.load(file)
+    
+    with open(sequence_path) as file:
+        sequence_dict = json.load(file)
 
-    sequence_dict = make_fasta.parse_fasta(r'C:\Users\georg\OneDrive\Документы\лаба\proteases_3_kurs\proteins\Pr100.fa')
-    print(sequence_dict)
-    descriptor_dict = get_descriptors(sequence_dict)
-
-    with open(desriptor_path, 'w') as file:
-        json.dump(descriptor_dict, file)
+    with open(descriptor_path.json, 'w') as file:
+        json.dump(get_descriptors(sequence_dict), file)
 
 
 if __name__ == '__main__':
